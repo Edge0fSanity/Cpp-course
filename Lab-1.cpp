@@ -8,16 +8,18 @@ int main()
     cin >> n;
     switch(n) {
         case 1:
-        cout << "Введите 2 числа" << endl;
-        float a;
-        float b;
-        cin >> a >> b;
-        cout << "Сумма " << a+b << endl;
-        cout << "Разность " << a-b << endl;
-        cout << "Произведение " << a*b << endl;
-        cout << "Частное " << a/b << endl;
-        cout << "Ср. арифметическое " << (a+b)/2 << endl;
+            cout << "Введите 2 числа" << endl;
+            float a;
+            float b;
+            cin >> a >> b;
+            cout << "Сумма " << a+b << endl;
+            cout << "Разность " << a-b << endl;
+            cout << "Произведение " << a*b << endl;
+            cout << "Частное " << a/b << endl;
+            cout << "Ср. арифметическое " << (a+b)/2 << endl;
         break;
+        case 2:
+        
     }
     return 0;
 }
