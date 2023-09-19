@@ -29,16 +29,16 @@ int main()
         float price_cheese = 30.30;
         float price_kefir = 40.40;
         cout << "Брат, все есть, смотри, нэдорога.\n Хлэб " << price_bread << " рублэй\n" <<
-            "Колбасы" << price_colbasa << " рублэй\n" <<
-            "Сыра" << price_cheese << " рублэй\n" <<
-            "Кефира" << price_kefir << " рублэй\n";
-        cout << "Хлеб сколько нада ?";
+            " Колбасы " << price_colbasa << " рублэй\n" <<
+            " Сыра " << price_cheese << " рублэй\n" <<
+            " Кефира " << price_kefir << " рублэй\n";
+        cout << "Хлеб сколько нада ?\n";
         cin >> bread;
-        cout << "Колбасы сколько нада ?";
+        cout << "Колбасы сколько нада ?\n";
         cin >> colbasa;
-        cout << "Сыра сколько нада ?";
+        cout << "Сыра сколько нада ?\n";
         cin >> cheese;
-        cout << "Кефира сколько нада ?";
+        cout << "Кефира сколько нада ?\n";
         cin >> kefir;
         cout << bread*price_bread + colbasa*price_colbasa + cheese*price_cheese + kefir*price_kefir
             << "\nСтолька денег с тебя, брат";
