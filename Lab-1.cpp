@@ -87,17 +87,60 @@ int main()
             break;
         }
         case 6: {
+            int i, x = 1, m;
+            int a[50]{};
+       
+            for (i = 0; i <= 49; i++) {
+                x = 1;
+                while (x != 0) {
+                    m = 1 + rand() % 99;
+                    if (m % 2 != 0) {
+                        a[i] = m;
+                        x = 0;
+                    }  
+                }
+            }
+            for (int n : a){
+                cout << n << endl;
+            }
+            break;
+        }
+        case 7: {
             int i;
-            vector <int> a(50);
-            srand(time(NULL));
-            for (i = 0; i <= 50; i++) {
-                a[i] = 1 + rand() % (99 - 1 + 1);
-                if 
+            char a[][28] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "с15", "16", "17", "18", "19", "20", "с21", "с22", "23", "с24", "с25", "с26", "с27", "с28"};
+            cout << "Day ?" << endl;
+            cin >> i;
+            cout << a[i-1];
+        break;
+        }
+        case 8: {
+            int i = 10, r=0, a, b, ans;
+            while (i != 0) {
+                a = 1 + rand() % 10;
+                b = 1 + rand() % 10;
+                cout << a << "*" << b << "= ?";
+                cin >> ans;
+                if (ans == a * b) {
+                    r++;
+                }
+                i--;
+            }
+            if (r == 10) {
+                cout << "Отлично";
+            }
+            else if (r == 9 or r == 8){
+                cout << "Хорошо";
+            }
+            else if (r == 7 or r == 6) {
+                cout << "Удовлетворительно";
+            }
+            else if (r < 6) {
+                cout << "Плохо";
             }
 
-
-            
         }
+            
+        
             
     }
     
