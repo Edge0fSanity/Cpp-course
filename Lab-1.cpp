@@ -7,11 +7,12 @@ using namespace std;
 
 int main()
 {
-    int n;
-    cout << "Номер задания ?" << endl;
-    cin >> n;
-    switch(n) 
-    {
+    while (true) {
+        int n;
+        cout << "Номер задания ?" << endl;
+        cin >> n;
+        switch (n)
+        {
         case 1: {
             cout << "Введите 2 числа" << endl;
             float a;
@@ -63,7 +64,8 @@ int main()
             cin >> ans;
             if (ans == a * b) {
                 cout << "Верно, молодец" << endl;
-            } else {
+            }
+            else {
                 cout << "Неправильно, правильный ответ - " << a * b;
             }
             break;
@@ -78,18 +80,19 @@ int main()
                     g = 0;
                     cout << "вы допустили потерю дорогостоящего оборудования, ИДИОТ !" << endl;
                 }
-                else if (g==0) {
+                else if (g == 0) {
                     cout << "Все ящики загружены, хорошая работа";
                 }
-                
+
             }
-            
+
             break;
         }
         case 6: {
+            srand(time(NULL));
             int i, x = 1, m;
             int a[50]{};
-       
+
             for (i = 0; i <= 49; i++) {
                 x = 1;
                 while (x != 0) {
@@ -97,24 +100,25 @@ int main()
                     if (m % 2 != 0) {
                         a[i] = m;
                         x = 0;
-                    }  
+                    }
                 }
             }
-            for (int n : a){
+            for (int n : a) {
                 cout << n << endl;
             }
             break;
         }
         case 7: {
             int i;
-            char a[][28] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "с15", "16", "17", "18", "19", "20", "с21", "с22", "23", "с24", "с25", "с26", "с27", "с28"};
+            char a[][28] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "с15", "16", "17", "18", "19", "20", "с21", "с22", "23", "с24", "с25", "с26", "с27", "с28" };
             cout << "Day ?" << endl;
             cin >> i;
-            cout << a[i-1];
-        break;
+            cout << a[i - 1];
+            break;
         }
         case 8: {
-            int i = 10, r=0, a, b, ans;
+            srand(time(NULL));
+            int i = 10, r = 0, a, b, ans;
             while (i != 0) {
                 a = 1 + rand() % 10;
                 b = 1 + rand() % 10;
@@ -128,7 +132,7 @@ int main()
             if (r == 10) {
                 cout << "Отлично";
             }
-            else if (r == 9 or r == 8){
+            else if (r == 9 or r == 8) {
                 cout << "Хорошо";
             }
             else if (r == 7 or r == 6) {
@@ -139,11 +143,11 @@ int main()
             }
 
         }
-            
-        
-            
-    }
-    
 
+
+
+        }
+
+    }
     return 0;
 }
