@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string> 
+#include <time.h>
+#include <math.h>
 
 using namespace std;
 
@@ -38,7 +40,6 @@ int def() {
 		case 1:
 			getline(cin, text);
 			getline(cin, text);
-			cout << text;
 			break;
 		case 2:
 			if (text != "") {
@@ -63,6 +64,19 @@ int def() {
 			cout << "Введите верный номер пункта" << endl;
 			break;
 		}
+	}
+}
+
+double f(double x, double y) {
+	return sqrt(pow(x, 2) + pow(y, 2));
+}
+
+double dist(double x1, double y1, double x2, double y2) {
+	if ((x1 == x2) && (y1 == y2)) {
+		return 0;
+	}
+	else {
+		return sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
 	}
 }
 
@@ -94,7 +108,36 @@ int main() {
 	case 3: 
 		def();
 		break;
-	
+	case 4: {
+		const double PI = 3.141592653589793;
+		float r, h;
+		cout << "Введите высоту и радиус цилиндра соответственно" << endl;
+		cin >> h >> r;
+		if ((h <= 0) || (r <= 0)) {
+			cout << "Радиус и высота должны быть натуральными" << endl;
+			return 0;
+		}
+		long double V = PI * r * r * h;
+		cout << V << endl;
+		break;
+	}
+	case 5: {
+		srand(time(NULL));
+		double x, y;
+		do {
+			x = 1 + rand() % 1000;
+			y = 1 + rand() % 1000;
+		} while (x != y);
+		cout << f(x, y) << endl;
+		break;
+	}
+	case 6: {
+		double x1, y1, x2, y2;
+		cout << "Введите x1, y1, x2, y2" << endl;
+		cin >> x1 >> y1 >> x2 >> y2;
+		cout << dist(x1, y1, x2, y2) << " - расстояние между точками" << endl;
+	}
+
 	default:
 		break;
 	}
