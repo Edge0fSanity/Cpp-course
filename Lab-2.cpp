@@ -2,6 +2,7 @@
 #include <string> 
 #include <time.h>
 #include <math.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -9,17 +10,18 @@ using namespace std;
 
 
 
-int check(string txt) {
-	int i, count=1, mcount = 0;
-	for (i = 0; i <= txt.length() - 1; i++) {
-		if (txt[i] == txt[i + 1]) {
+int check(string s) {
+	s = s + " ";
+	int i, count=0, mcount = 1;
+	for (i = 0; i <= s.length(); i++) {
+		if (isalpha(s[i])) {
 			count++;
 		}
 		else {
 			if (count > mcount) {
 				mcount = count;
 			}
-			count = 1;
+			count = 0;
 		}
 	}
 	return mcount;
@@ -31,7 +33,7 @@ int def() {
 	int p;
 	while (true) {
 		cout << "Выберите пункт" << endl;
-		cout << "1.Ввести текст" << endl;
+		cout << "1.Ввести текст(латиницей)" << endl;
 		cout << "2.Проверить текст" << endl;
 		cout << "3.Вывод результата" << endl;
 		cout << "4.Выход" << endl;
@@ -118,7 +120,7 @@ int main() {
 			return 0;
 		}
 		long double V = PI * r * r * h;
-		cout << V << endl;
+		cout << fixed << setprecision(15) << V << endl;
 		break;
 	}
 	case 5: {
