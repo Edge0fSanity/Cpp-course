@@ -38,28 +38,16 @@ int main() {
 	return 0;
 }
 */
-auto input(string type) {
-	if (type == "int") {
-		int i;
+int intput(string type) {
+	int i;
+	cin >> i;
+	while (cin.fail() == 1) {
+		cout << "Введите снова" << endl;
+		cin.clear();
+		cin.sync();
 		cin >> i;
-		while (cin.fail() == 1) {
-			cout << "Введите снова" << endl;
-			cin.clear();
-			cin.sync();
-			cin >> i;
-		}
-		return i;
-	} else if(type == "str") {
-			string s;
-			cin >> s;
-			while (cin.fail() == 1) {
-				cout << "Введите снова" << endl;
-				cin.clear();
-				cin.sync();
-				cin >> s;
-			}
-			return s;
-		}
+	}
+	return i;
 }
 
 int main() {
