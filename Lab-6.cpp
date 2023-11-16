@@ -7,8 +7,10 @@ void fill_rand(int[], size_t);
 void fill(int[], size_t);
 int sum_ev(int);
 int cin_err();
+/*
 void sum_sort(int[], size_t);
 void Qsort(int[], size_t, size_t);
+*/
 
 int main() {
 	srand(time(NULL));
@@ -61,6 +63,7 @@ int main() {
 			}
 			break;
 		}
+		/*
 		case 4: {
 			if (l == 0) {
 				cout << "Вы еще не ввели массив" << endl;
@@ -71,6 +74,7 @@ int main() {
 				cout << "Массив отсортирован по возрастанию последней цифры" << endl;
 			}
 		}
+		*/
 		case 5:
 			return 0;
 
@@ -86,6 +90,7 @@ int main() {
 	return 0;
 }
 
+/*
 int compare(int a, int b) {
 	if (a%10 > b%10){ return a; }
 	if (a%10 < b%10) { return b; }
@@ -110,7 +115,7 @@ void Qsort(int arr[], size_t start, size_t end) {
 	if (end > 1)
 		Qsort(arr, 1, end);
 }
-
+*/
 void sum_sort(int arr[], size_t l) {
 	for (size_t i = 0; i < l; ++i) {
 		for (size_t j = 0; j < l - i-1; ++j) {
