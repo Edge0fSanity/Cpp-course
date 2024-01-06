@@ -1,106 +1,153 @@
 #include <iostream>
-#include <fstream>
+#include <math.h>
 #include <string>
-#include <cstdlib> //библиотека, чтобы подчищать консоль
-
+#include <vector>
 
 
 using namespace std;
 
-int cin_err() {
-	if (cin.fail())
-	{
-		cout << "Вы ввели неверное значение" << endl;
-		cin.clear();
-		cin.ignore(100, '\n');
-		return 1;
-	}
-	return 0;
-}
-bool check_preferences(string login, string pass, string base);
+class Calculator {
 
-struct users {
-	string login;
-	string pass;
-	string name;
+public:
+	float add(float x, float y) {
+		return x + y;
+	}
+
+	float sub(float x, float y) {
+		return x - y;
+	}
+
+	float multy(float x, float y) {
+		return x * y;
+	}
+
+	float divide(float x, float y) {
+		if (y != 0) { return x / y; }
+		cout << "Division by zero" << endl;
+		
+	}
+
+	float sin(float x) {
+		return sin(x);
+	}
+
+	float cos(float x) {
+		return cos(x);
+	}
+
+	float logten(float x) {
+		return log10(x);
+	}
+
+	float logn(float x, float n) {
+		return log(x) / log(n);
+	}
+	
+	string conc(string x, string y) {
+		return x + y;
+	}
+
+	vector<float> addarray(vector<float> x, vector<float> y) {
+		return x + y;
+	}
 };
-
-void users_write(users user[], fstream& file) {
-	int f = 0, l, i = 0;
-	string line;
-	l = sizeof(user) / sizeof(user[0]);
-
-	while (getline(file, line) && (i < l)) {
-		if (f == 0) {
-			user[i].login = line.substr(3);
-		}
-		else if (f == 1) {
-			user[i].pass = line.substr(3);
-		}
-		else if (f == 2) {
-			user[i].name = line.substr(3);
-		}
-		++f;
-		++i;
-		if (f == 4) { f = 0; }
-	}
-}
 
 
 int main() {
-	string path;
-	string line, base = "", login, pass;
-	fstream file;
-	users user[3];
+	string op;
 
-	file.open("Users.txt");
+	cout << "Добро пожаловать в инженерный калькулятор" << endl;
+	cout << "Выберите действие (+, -, *, /, sin, cos, log10, logn, conc, arr):";
+	cin >> op;
+	switch op{
+	case "+": {
+		float x, y;
+		cout << "Введите по-очереди слагаемые" << endl;
+		cin >> x;
+		cin >> y;
+		cout << "Сумма равна:" << Calculator.add(x, y) << endl;
+		break;
+	}
+	case "-": {
+		float x, y;
+		cout << "Введите по-очереди уменьшаемое и вычитаемое" << endl;
+		cin >> x;
+		cin >> y;
+		cout << "Разность равна: " << Calculator.sub(x, y) << endl;
+		break;
+	}
+	case "*": {
+		float x, y;
+		cout << "Введите по-очереди множители" << endl;
+		cin >> x;
+		cin >> y;
+		cout << "Произведение равно: " << Calculator.multy(x, y) << endl;
+		break;
+	}
+	case "+": {
+		float x, y;
+		cout << "Введите по-очереди делимое и делитель" << endl;
+		cin >> x;
+		cin >> y;
+		cout << "Частное равно: " << Calculator.divide(x, y) << endl;
+		break;
+	}
+	case "sin":{
+		float x;
+		cout << "Введите х: ";
+		cin >> x;
+		cout << "sin(" << x << ") = " << Calculator.sin(x) << endl;
+		break;
+	}
+	case "cos": {
+		float x;
+		cout << "Введите х: ";
+		cin >> x;
+		cout << "cos(" << x << ") = " << Calculator.cos(x) << endl;
+		break;
+	}
+	case "log10": {
+		float x;
+		cout << "Введите х: ";
+		cin >> x;
+		cout << "log10 " << x << " = " << Calculator.logten(x) << endl;
+		break;
+	}
+	case "logn": {
+		float x, y;
+		cout << "Введите сначала аргумент, а потом основание" << endl;
+		cin >> x;
+		cin >> y;
+		cout << "Ответ: " << Calculator.logn(x, y) << endl;
+		break;
+	}
 
-	if (!file.is_open()) { cout << "Файл пользователей не найден" << endl;  return 1; } //открытие файла + обработчик ошибок	
+	case "conc": {
+		string x, y;
+		cout << "Введите по очереди строки, которые необходимо сложить" << endl;
+		cin >> x;
+		cin >> y;
+		cout << "Результат:" << Calculator.conc(x, y) << endl;
+		break;
+	}
 
-	users_write(user, file);
-
-
-	while (true) {
-		cout << "Введите логин и пароль" << endl;
-		cin >> login;
-		cin >> pass;
-		if (check_preferences(login, pass, base)) {
-			cout << "Да, такого знаю, добро пожаловать" << endl;
-			break;
+	case "arr": {
+		vector<float> x, y, z;
+		float a, b;
+		cout << "Введите первый массив чисел через пробел" << endl;
+		while (cin >> a) {
+			x.push_back(a);
 		}
-		else {
-			system("cls");
-			cout << "Таких не знаем, давай еще раз" << endl;
+		cout << "Введите второй массив чисел через пробел" << endl;
+		while (cin >> b) {
+			y.push_back(b);
 		}
+		cout << "Результат сложения: ";
+		for (float i : Calculator.arr(x, y)) {
+			cout << i << " "
+		}
+	}
 	}
 
 
-
-
-	file.close();
-
-	return 0;
-}
-
-
-bool check_preferences(string login, string pass, string base) {
-	string maylogin = "", maypass = "";
-	for (int i = 1; i < base.length(); ++i) {
-		if (base[i - 1] == 'l' && base[i] == ':') {
-			++i;
-			while (base[i] != '\n') {
-				maylogin += base[i];
-				++i;
-			}
-			i += 3;
-			while (base[i] != '\n') {
-				maypass += base[i];
-				++i;
-			}
-		}
-		if (maylogin == login && maypass == pass) {
-			return true;
-		}
-	}
-	return false;
 }
